@@ -1,7 +1,7 @@
 import random
 import hangman_art
 from hangman_words import word_list
-from replit import clear
+import os
 
 print(hangman_art.logo)
 
@@ -11,22 +11,22 @@ display = []
 used_letters = []
 for letter in chosen_word:
     display.append('_')
-print("Cheater!", chosen_word)
+# print("Cheater!", chosen_word)
 print(f"Word: {' '.join(display)}")
 guess = input("Guess a letter:").lower()
-clear()
+os.system("cls")
 while total_lives > 0:
     print(hangman_art.logo)
     if len(guess) != 1:
         print("Guess must be exactly one character. Try again.")
         print(hangman_art.stages[total_lives])
         guess = input("Guess a letter:")
-        clear()
+        os.system("cls")
     if guess in used_letters:
         print("You already chose that letter, try again.")
         print(hangman_art.stages[total_lives])
         guess = input("Guess a letter:")
-        clear()
+        os.system("cls")
     else:
         if guess in chosen_word:
             num_amount = 0
@@ -36,11 +36,11 @@ while total_lives > 0:
                     num_amount += 1
             used_letters.append(guess)
             if '_' in display:
-                print(f"{guess.capitalize()} is in the word {num_amount} times.")
+                print(f"{guess.capitalize()} is used {num_amount} times.")
                 print(f"Word: {' '.join(display)}")
                 print(hangman_art.stages[total_lives])
                 guess = input("Guess a letter:").lower()
-                clear()
+                os.system("cls")
             else:
                 print(hangman_art.stages[total_lives])
                 print(f"You win! Word: {chosen_word}")
@@ -57,4 +57,4 @@ while total_lives > 0:
                 print(f"Word: {' '.join(display)}")
                 print(hangman_art.stages[total_lives])
                 guess = input("Guess a letter:").lower()
-                clear()
+                os.system("cls")
