@@ -1,4 +1,4 @@
-import random, os, sys
+import random, os
 from blackjack_art import logo
 
 def hit_me():
