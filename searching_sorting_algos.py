@@ -58,7 +58,7 @@ def insert_sort_interleaved(sort_this, start_index, gap):
     return sort_this
 
 # Shell sort algorithm
-def shell_sort(sort_this, gap_values): #Dont forget that (gap_values) needs to be a descending list where the last index == 1
+def shell_sort(sort_this, gap_values): #Dont forget that (gap_values) needs to be a descending list where gap_values[max(index)] == 1
     for gap_value in gap_values:
         for i in range(gap_value):
             insert_sort_interleaved(sort_this, i, gap_value)
