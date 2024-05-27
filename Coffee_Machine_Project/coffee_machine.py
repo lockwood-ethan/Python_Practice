@@ -80,11 +80,14 @@ while COFFEE_SELECTION != 'off':
                     break
         else:
             MONEY = float(insert_coins())
-            if MONEY > MENU.get(COFFEE_SELECTION).get('cost'):
+            if MONEY >= MENU.get(COFFEE_SELECTION).get('cost'):
                 change = give_change()
                 MONEY = 0.0
                 print(f"Here is ${change} dollars in change.")
                 for key in MENU.get(COFFEE_SELECTION).get('ingredients'):
                     resources[key] = resources[key] - MENU.get(COFFEE_SELECTION).get('ingredients').get(key)
-                print(f"Here is your {COFFEE_SELECTION}. Enjoy!")
+                print(f"Here is your ☕ {COFFEE_SELECTION.capitalize()}. Enjoy!")
+            else:
+                print("Sorry that is not enough money, money refunded.")
+                MONEY = 0
 sys.exit()
