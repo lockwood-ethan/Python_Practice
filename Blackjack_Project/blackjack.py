@@ -39,7 +39,7 @@ another_card = input("Type 'y' to get another card, type 'n' to pass: ")
 while another_card == 'y':
     new_card = hit_me()
     player_hand.append(new_card)
-    
+
     if sum(player_hand) > 21 and 11 in player_hand:
         ace_index = player_hand.index(11)
         player_hand[ace_index] = 1
