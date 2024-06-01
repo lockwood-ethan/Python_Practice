@@ -284,7 +284,7 @@ question_data = [
     {'type': 'boolean',
      'difficulty': 'hard',
      'category': 'General Knowledge',
-     'question': 'In Scandinavian languages, the letter &Aring; means river.',
+     'question': 'In Scandinavian languages, the letter \u00C5 means river.',
      'correct_answer': 'True',
      'incorrect_answers': ['False']},
     {'type': 'boolean',
