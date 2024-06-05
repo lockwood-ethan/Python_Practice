@@ -57,7 +57,7 @@ def random_walk(num_steps):
         tim.setheading(random.choice(directions))
         i += 1
 
-random_walk(200)
+# random_walk(200)
 
 def pattern_walk():
     for i in range(3, 11):

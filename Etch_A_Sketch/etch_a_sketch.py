@@ -21,7 +21,6 @@ def clear():
     tim.home()
     tim.pendown()
     
-
 screen.listen()
 screen.onkeypress(key="w", fun=move_forward)
 screen.onkeypress(key="s", fun=move_backward)
