@@ -129,11 +129,9 @@ def find_solution(num_string, goal_num):
                                                                         solutions.append(f"{num_string[num]} {OPERATORS[key]} {num_string[num2]} {OPERATORS[key2]} {num_string[num3]} {OPERATORS[key3]} {num_string[num4]} {OPERATORS[key4]} {num_string[num5]} {OPERATORS[key5]} {num_string[num6]} = {solution}")
     return solutions
 
-goal_num = 326
-num_string = ["1", "5", "6", "7", "10", "75"]
+goal_num = 861
+num_string = ["4", "5", "7", "8", "25", "50"]
 
 solutions = find_solution(num_string, goal_num)
 
 print(min(solutions))
-
-
