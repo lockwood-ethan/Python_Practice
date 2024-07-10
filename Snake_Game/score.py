@@ -9,7 +9,7 @@ class Score(t.Turtle):
         self.ht()
         self.penup()
         self.score = 0
-        with open("C:\\Users\\lockw\\Documents\\GitHub\\Python_Practice\\Snake_Game\\data.txt") as data:
+        with open("./Snake_Game/data.txt") as data:
             self.high_score = int(data.read())
         self.color("white")
         self.speed("fastest")
@@ -27,7 +27,7 @@ class Score(t.Turtle):
     def reset(self):
         if self.score > self.high_score:
             self.high_score = self.score
-            with open("C:\\Users\\lockw\\Documents\\GitHub\\Python_Practice\\Snake_Game\\data.txt", mode="w") as data:
+            with open("./Snake_Game/data.txt", mode="w") as data:
                 data.write(str(self.high_score))
         self.score = 0
         self.update_score()
