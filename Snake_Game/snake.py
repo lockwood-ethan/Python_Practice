@@ -30,7 +30,14 @@ class Snake:
         new_y = self.tail.ycor()
         new_square.goto(new_x, new_y)
         self.snake_body.append(new_square)
-
+        
+    def reset(self):
+        for seg in self.snake_body:
+            seg.goto(1000, 1000)
+        self.snake_body.clear()
+        self.create_snake()
+        self.head = self.snake_body[0]
+        self.tail = self.snake_body[len(self.snake_body) - 1]
 
     def move(self):
         for seg in range(len(self.snake_body) - 1, 0, -1):
