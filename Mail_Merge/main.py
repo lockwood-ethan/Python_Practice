@@ -14,7 +14,7 @@ with open("./Mail_Merge/Input/Letters/starting_letter.txt") as data:
     letter = data.read()
     
 for name in names:
-    name = name.strip()
-    new_letter = letter.replace("[name]", name)
-    with open("./Mail_Merge/Output/ReadyToSend/"f"letter_for_{name}.txt", "w") as data:
+    stripped_name = name.strip()
+    new_letter = letter.replace("[name]", stripped_name)
+    with open("./Mail_Merge/Output/ReadyToSend/"f"letter_for_{stripped_name}.txt", "w") as data:
         data.write(new_letter)
