@@ -46,7 +46,20 @@ def add_password():
             website_entry.delete(0, END)
 
 # ---------------------------- SEARCH ------------------------------- #
-#TODO: Create search function
+def search():
+    website = website_entry.get()
+    try:
+        with open(".\\Password_Manager\\data.json", "r") as data_file:
+            data = json.load(data_file)
+    except FileNotFoundError:
+        messagebox.showerror(title="File Not Found", message="There are no stored passwords.")
+    else:
+        try:
+            email_value = data[website]["email"]
+            password_value = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"Email: {email_value}\nPassword: {password_value}")
+        except KeyError:
+            messagebox.showerror(title=website, message="No saved password for this website.")
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
@@ -65,7 +78,7 @@ website_entry = Entry(width=34, relief="solid")
 website_entry.grid(column=1, row=1, pady=2)
 website_entry.focus()
 
-search_button = Button(text="Search", width=14, relief="groove")
+search_button = Button(text="Search", width=14, relief="groove", command=search)
 search_button.grid(column=2, row=1, pady=2)
 
 email_label = Label(text="Email/Username:", bg="white")
