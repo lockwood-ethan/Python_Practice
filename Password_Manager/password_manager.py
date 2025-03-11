@@ -54,12 +54,12 @@ def search():
     except FileNotFoundError:
         messagebox.showerror(title="File Not Found", message="There are no stored passwords.")
     else:
-        try:
+        if website in data:
             email_value = data[website]["email"]
             password_value = data[website]["password"]
             messagebox.showinfo(title=website, message=f"Email: {email_value}\nPassword: {password_value}")
-        except KeyError:
-            messagebox.showerror(title=website, message="No saved password for this website.")
+        else:
+            messagebox.showerror(title=website, message=f"No saved password for {website}.")
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
