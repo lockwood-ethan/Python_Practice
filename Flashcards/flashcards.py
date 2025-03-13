@@ -4,11 +4,23 @@ import random
 
 BACKGROUND_COLOR = "#B1DDC6"
 
-data = pandas.read_csv(".\\Flashcards\\french_words.csv")
-to_learn = data.to_dict(orient="records")
+try:
+    data = pandas.read_csv(".\\Flashcards\\words_to_learn.csv")
+    to_learn = data.to_dict(orient="records")
+except FileNotFoundError:
+    data = pandas.read_csv(".\\Flashcards\\french_words.csv")
+    to_learn = data.to_dict(orient="records")
+
 current_card = {}
 
 #----------------------- FUNCTIONS -----------------------#
+def remove_known_word():
+    global current_card, to_learn
+    to_learn.remove(current_card)
+    data = pandas.DataFrame.from_records(to_learn)
+    data.to_csv(path_or_buf=".\\Flashcards\\words_to_learn.csv", mode="w", index=False)
+    next_card()
+
 def next_card():
     global current_card, flip_timer
     window.after_cancel(flip_timer)
@@ -38,7 +50,7 @@ canvas_word_text = canvas.create_text(400, 263, text="", font=("Arial", 60, "bol
 canvas.grid(column=0, columnspan=2, row=0)
 
 correct_img = PhotoImage(file=".\\Flashcards\\right.png")
-correct_button = Button(image=correct_img, highlightthickness=0, relief="flat", command=next_card)
+correct_button = Button(image=correct_img, highlightthickness=0, relief="flat", command=remove_known_word)
 correct_button.grid(column=1, row=1)
 
 wrong_img = PhotoImage(file=".\\Flashcards\\wrong.png")
